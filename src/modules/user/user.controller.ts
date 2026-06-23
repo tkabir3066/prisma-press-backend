@@ -1,7 +1,8 @@
-import { NextFunction, Request, RequestHandler, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { userService } from "./user.service";
 import { catchAsync } from "../../utils/catchAsync";
+import { sendResponse } from "../../utils/sendResponse";
 
 // const registerUser = async (req: Request, res: Response) => {
 //   try {
@@ -26,7 +27,14 @@ import { catchAsync } from "../../utils/catchAsync";
 const registerUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const result = await userService.registerUserIntoDB(req.body);
-    res.status(StatusCodes.CREATED).json({
+    // res.status(StatusCodes.CREATED).json({
+    //   success: true,
+    //   statusCode: StatusCodes.CREATED,
+    //   message: "User registered successfully",
+    //   data: result,
+    // });
+
+    sendResponse(res, {
       success: true,
       statusCode: StatusCodes.CREATED,
       message: "User registered successfully",

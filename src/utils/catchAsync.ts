@@ -10,7 +10,7 @@ export const catchAsync = (fn: RequestHandler) => {
         success: false,
         statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
         message: "Failed to register user",
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: (error as Error).message,
       });
     }
   };

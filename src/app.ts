@@ -7,6 +7,8 @@ import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcryptjs";
 import { userRoutes } from "./modules/user/user.route";
 import { authRoutes } from "./modules/auth/auth.route";
+import { postRoutes } from "./modules/post/post.route";
+import { commentRoutes } from "./modules/comment/comment.route";
 
 const app: Application = express();
 
@@ -25,4 +27,6 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
 export default app;

@@ -31,11 +31,12 @@ const getAllPosts = catchAsync(
 );
 const getPostsStats = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    const result = await postService.getPostStats();
     sendResponse(res, {
       success: true,
       statusCode: StatusCodes.OK,
-      message: "User registered successfully",
-      data: {},
+      message: "Post stats retrived successfully",
+      data: result,
     });
   },
 );
